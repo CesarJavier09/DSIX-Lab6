@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        img {
+            height: auto;
+            width: 300px;
+        }
+        div.contenedor {
+            max-width: 60%;
+            text-align: justify;
+            font-size: large;
+        }
+        div.botones {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        button {
+            min-height: 30px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+    </style>
+    <script>
+            let aux = 0;
+
+            const referenciar = () => {
+                
+                let refGris = document.querySelectorAll(".gris");
+                let refNilia = document.getElementsByClassName("nilia");
+                let refAutor = document.querySelector("#autor");
+
+                let attrHrfGris = document.createAttribute("href");
+                attrHrfGris.value = "https://www.lecturalia.com/libro/102812/la-biblia-de-los-caidos-tomo-1-del-testamento-del-gris";
+                let attrHrfNilia = document.createAttribute("href");
+                attrHrfNilia.value = "https://www.piedrasanta.com/shop/product/15441-del-testamento-de-nilia-la-biblia-de-los-caidos-i-panamericana-44240?category=175#attr=";
+                let attrHrfAutor = document.createAttribute("href");
+                attrHrfAutor.value = "https://es.wikipedia.org/wiki/Fernando_Trujillo_Sanz";
+
+                refGris.forEach(element => {
+                    let clone = attrHrfGris.cloneNode(true)
+                    element.setAttributeNode(clone);
+                });
+
+                Array.from(refNilia).forEach(element => {
+                    let clone = attrHrfNilia.cloneNode(true)
+                    element.setAttributeNode(clone);
+                });
+
+                refAutor.setAttributeNode(attrHrfAutor);
+
+                let btn = document.getElementById("ref");
+                btn.disabled = true;
+
+                aux++;
+                
+                if(aux == 3){
+                    let saludo = document.createElement("div");
+                    saludo.innerHTML = "<p>Felicidades, has ejecutado todos mis trucos<p>";
+                    let div = document.querySelector(".botones");
+                    let padre = div.parentNode;
+                    padre.insertBefore(saludo, div);
+                }
+            }
+
+            const mostrarSiguiente = () =>{
+                let div = document.querySelector("#siguiente");
+                let p = document.createElement("p");
+                let span = document.createElement("span");
+                p.innerHTML = "Siguiente entrega: ";
+                span.innerHTML = "<a href=\"https://www.lecturalia.com/libro/102815/la-biblia-de-los-caidos-tomo-2-del-testamento-del-gris\" >La biblia de los caídos tomo 2 del testamento del Gris<a>"
+                p.appendChild(span);
+                div.appendChild(p);
+                let btn = document.getElementById("next");
+                btn.disabled = true;
+
+                aux++;
+                
+                if(aux == 3){
+                    let saludo = document.createElement("div");
+                    saludo.innerHTML = "<p>Felicidades, has ejecutado todos mis trucos<p>";
+                    let div = document.querySelector(".botones");
+                    let padre = div.parentNode;
+                    padre.insertBefore(saludo, div);
+                }
+            }
+
+            const ilustrar = () =>{
+                let img = document.createElement("img");
+                let src = document.createAttribute("src");
+                src.value = "https://scontent-mia3-1.xx.fbcdn.net/v/t31.18172-8/10887286_782575308485558_3536038623877266720_o.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=AOQxTkaTsZsAX9U8gKW&_nc_ht=scontent-mia3-1.xx&oh=00_AT8PX_Xwqcol5hToBCDsA4VxxnX_J4VliE-R0Um8nXEZcA&oe=62D1E559";
+                img.setAttributeNode(src);
+                let bd = document.body.children[0];
+                bd.replaceChild(img, bd.childNodes[0]);
+                let btn = document.getElementById("img");
+                btn.disabled = true;
+                
+                aux++;
+                
+                if(aux == 3){
+                    let saludo = document.createElement("div");
+                    saludo.innerHTML = "<p>Felicidades, has ejecutado todos mis trucos<p>";
+                    let div = document.querySelector(".botones");
+                    let padre = div.parentNode;
+                    padre.insertBefore(saludo, div);
+                }
+            }
+            
+        
+    </script>
+</head>
+<body>
+    <h1 id="titulo">La Biblia de los Caidos</h1><br>
+    <h1>El Testamento de Nilia</h1>
+    <p id="reemplazar"></p>
+    <h2 id="subtitulo">Versiculo 3</h2>
+    <div class="contenedor">
+        <p id="p1">Una lápida derruida asomaba entre la tierra, sembrada de líquenes, helechos y rosales. Apoyada 
+        contra la lápida ardía una antorcha. <a class="gris">El Gris</a> clavó otra en el suelo, a unos cuatro metros de distancia. 
+        La luz que proyectaban aquellas pequeñas llamas era muy superior a lo que se esperaría de ellas. Además, 
+        solo iluminaban el espacio entre ellas, como un foco abierto en la noche, pero apenas proyectaban luz hacia fuera. </p>
+        <p id="p2">En el centro de aquel foco, entre un círculo de piedras ennegrecidas, se amontonaban varios troncos y ramas. 
+        <a class="gris">El Gris</a> se agachó, los encendió con un golpe de su cochambroso cuchillo.</p>
+        <div id="dialogo">
+            —No echéis más leña —dijo—. El fuego durará toda la noche.<br>
+            —Necesitamos agua y algo de comer —dijo Elías. <br>
+            —Ya han ido a comprar todo lo necesario. Junto al fuego no pasaréis frío. No salgáis de este claro. Si os 
+            internáis en el bosque, os perderéis, y yo no voy a ir a buscaros. <br>
+            —Así que estamos encerrados otra vez <br>
+            —protestó Amanda—. ¿Por qué nos has traído a un cementerio? <br>
+            —Porque aquí nadie dará con vosotros. Es posible que aparezca… alguien que hablará sin cesar sobre dragones. 
+            No le hagáis ningún caso. Es un loco inofensivo.<br> 
+            —Algo me dice que no es el único al que le falta un tornillo —murmuró Bono.<br>
+            —¿Quién nos persigue? ¿Por qué? —preguntó Elías—. <a class="nilia">Nilia</a> dijo... <br>
+            —No lo sé. —<a class="gris">El Gris</a> se incorporó—. <a class="nilia">Nilia</a> me pidió que os pusiera a salvo si algo le sucedía. No me dio ninguna 
+            explicación. <br>
+            Elías también se levantó. Enseguida le atravesaron los ojos inexpresivos del <a class="gris">Gris</a>.<br>
+            —¿No te contó nada? Eres su amigo, ¿no? <br>
+            <a class="gris">El Gris</a> pareció meditar la respuesta. —Yo no tengo amigos como tú lo entiendes. Le debía un favor, lo que en mi mundo 
+            es similar a la amistad.
+        </div><br>
+        <p>La biblia de los caídos tomo 1 del testamento de Nilia, 2015 - <a id="autor">Fernando Trujillo Sanz</a></p>
+        <div id="siguiente"></div>
+        <div class="botones">
+            <button id="ref" onclick="referenciar()">Referenciar</button>
+            <button id="img" onclick="ilustrar()">Ilustrar</button>
+            <button id="next" onclick="mostrarSiguiente()">Siguiente Tomo</button>
+        </div>
+    </div>
+    
+</body>
+</html>
